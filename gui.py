@@ -51,7 +51,7 @@ class App:
                 response = requests.post(
                     "https://speech.googleapis.com/v1/speech:transcribe",
                     headers={
-                        "Authorization": "Bearer AIzaSyBCnqH-zz-orwJhXbk1-SEqEaepLf83v8E",
+                        "Authorization": "Bearer ${{SECRETS.GOOGLE_API_KEY}}",
                         "Content-Type": "audio/x-raw,format=S16LE,channels=1,rate=16000",
                     },
                     body=data,
@@ -63,7 +63,7 @@ class App:
                     response = requests.get(
                         f"https://speech.googleapis.com/v1/speech:transcript/{transcript_id}",
                         headers={
-                            "Authorization": "Bearer AIzaSyBCnqH-zz-orwJhXbk1-SEqEaepLf83v8E",
+                            "Authorization": "Bearer ${{SECRETS.GOOGLE_API_KEY}}",
                         },
                     )
                     print("Trying to get Transcribe Request Status",response.json()["status"])
